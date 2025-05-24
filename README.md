@@ -10,3 +10,7 @@ Bu Proje sadece deneme amaçlı yapılmıştır kullanım sırasında buglar ola
 Projenin sadece genel tasarımına önem verildiği için kendinize göre kişiselleştirmeniz mümkündür.
 
 ![Ekran görüntüsü 2025-05-24 002639](https://github.com/user-attachments/assets/391fe442-54bb-4d33-b76f-a3e69a2971d7)
+
+Web siteyi başlatmak için öncelikle 
+"npm install"
+kodunu kullanıp terminal ile "node app.js" i başlatmanız gerekmektedir
