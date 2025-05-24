@@ -1,0 +1,46 @@
+<%- include('../partials/header.ejs') %>
+
+    <div class="dashboard-hero">
+        <div class="hero-content">
+            <h1 class="dashboard-title">Panelim</h1>
+            <% if (typeof currentUserName !== 'undefined' && currentUserName) { %>
+                <p class="welcome-message">Hoş geldiniz, <strong><%= currentUserName %></strong>!</p>
+            <% } else { %>
+                <p class="welcome-message">Hoş geldiniz!</p>
+            <% } %>
+            <p class="dashboard-description">Bu sizin kişisel yönetim panelinizdir. Buradan müşterilerinizi yönetebilir ve onlara e-postalar gönderebilirsiniz.</p>
+
+            <div class="dashboard-actions">
+                <a href="/dashboard/customers" class="btn btn-primary">Müşterilerimi Yönet</a>
+                <a href="/dashboard/email/compose" class="btn btn-secondary">Yeni E-posta Oluştur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- İSTATİSTİK BÖLÜMÜ -->
+    <div class="stats-section">
+        <div class="stat-item">
+            <div class="stat-main-content">
+                <h3>Toplam Müşteri:</h3>
+                <p class="stat-description">
+                Sistemde kayıtlı olan toplam aktif müşteri sayınız.
+            </p>
+                <div class="stat-value"><%= typeof totalCustomers !== 'undefined' ? totalCustomers : '0' %></div>
+            </div>
+            
+        </div>
+
+        <div class="stat-item">
+            <div class="stat-main-content">
+                <h3>Gönderilen E-posta:</h3>
+                <p class="stat-description">
+                Bugüne kadar sistem üzerinden gönderilmiş toplam e-posta adedi.
+            </p>
+                <div class="stat-value"><%= typeof totalEmailsSent !== 'undefined' ? totalEmailsSent : '0' %></div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

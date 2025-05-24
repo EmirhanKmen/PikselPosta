@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs') %>
+<div class="customer-detail-container section-box">
+    <h2>Müşteri Bilgileri</h2>
+    
+    <% if (customer) { %>
+        <div class="customer-info">
+            <div class="info-item">
+                <span class="info-label">Adı Soyadı:</span>
+                <span class="info-value"><%= customer.customer_name ? customer.customer_name : '-' %></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">E-posta Adresi:</span>
+                <span class="info-value"><%= customer.customer_email %></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Telefon Numarası:</span>
+                <span class="info-value"><%= customer.phone_number ? customer.phone_number : '-' %></span>
+            </div>
+            <div class="info-item full-width">
+                <span class="info-label">Adres:</span>
+                <span class="info-value multiline"><%= customer.address ? customer.address.replace(/\n/g, '<br>') : '-' %></span>
+            </div>
+            <div class="info-item full-width">
+                <span class="info-label">Sipariş Detayları / Notlar:</span>
+                <span class="info-value multiline"><%= customer.order_details ? customer.order_details.replace(/\n/g, '<br>') : '-' %></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Kayıt Tarihi:</span>
+                <span class="info-value"><%= new Date(customer.created_at).toLocaleString('tr-TR', { dateStyle: 'long', timeStyle: 'short' }) %></span>
+            </div>
+        </div>
+
+        <div class="form-actions" style="margin-top: 30px;">
+            <a href="/dashboard/customers/edit/<%= customer.id %>" class="btn btn-primary">Bu Müşteriyi Düzenle</a>
+            <a href="/dashboard/customers" class="btn btn-secondary">Müşteri Listesine Geri Dön</a>
+        </div>
+    <% } else { %>
+        <p class="no-data-message">Müşteri bilgileri bulunamadı.</p>
+    <% } %>
+</div>

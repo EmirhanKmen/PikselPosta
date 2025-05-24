@@ -1,0 +1,76 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="compose-email-container section-box">
+    <h2>Yeni E-posta Oluştur</h2>
+
+    <form action="/dashboard/email/send" method="POST" novalidate>
+        <div class="form-group">
+            <label for="subject">E-posta Konusu:</label>
+            <input type="text" id="subject" name="subject" value="<%= typeof formData !== 'undefined' && formData.subject ? formData.subject : '' %>" required class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="recipient_type">Alıcı Türü:</label>
+            <select id="recipient_type" name="recipient_type" class="form-control" required onchange="toggleCustomerSelection(this.value)">
+                <option value="">Seçiniz...</option>
+                <option value="all_customers" <%= (typeof formData !== 'undefined' && formData.recipient_type === 'all_customers') ? 'selected' : '' %>>Tüm Müşterilerim</option>
+                <option value="specific_customers" <%= (typeof formData !== 'undefined' && formData.recipient_type === 'specific_customers') ? 'selected' : '' %>>Belirli Müşterileri Seç</option>
+            </select>
+        </div>
+
+         <!-- Belirli Müşterileri Seçme Alanı -->
+        <div id="specific_customers_section" class="form-group" style="display: none;">
+            <label>Gönderilecek Müşteriler:</label>
+            <% if (typeof customers !== 'undefined' && customers.length > 0) { %>
+                <div class="customer-checkbox-list">
+                    <% customers.forEach(function(customer) { %>
+                        <div class="checkbox-item">
+                            <input type="checkbox" 
+                                   class="custom-hidden-checkbox"
+                                   id="customer_<%= customer.id %>" 
+                                   name="selected_customers[]" 
+                                   value="<%= customer.id %>"
+                                   <%= (typeof formData !== 'undefined' && formData.selected_customers && formData.selected_customers.includes(String(customer.id))) ? 'checked' : '' %>>
+                            <label class="custom-checkbox-label" for="customer_<%= customer.id %>"> <!-- YENİ SINIF -->
+                                <%= customer.customer_name ? customer.customer_name : customer.customer_email %> 
+                                <small>(<%= customer.customer_email %>)</small>
+                            </label>
+                        </div>
+                    <% }); %>
+                </div>
+                <small class="form-text text-muted">Göndermek istediğiniz müşterileri seçin.</small>
+            <% } else { %>
+                <p class="no-data-message">Seçilebilecek kayıtlı müşteri bulunmamaktadır.</p>
+            <% } %>
+        </div>
+        <div class="form-group">
+            <label for="html_content">E-posta İçeriği (HTML destekler):</label>
+            <textarea id="html_content" name="html_content" rows="10" class="form-control" required><%= typeof formData !== 'undefined' && formData.html_content ? formData.html_content : '' %></textarea>
+            <small class="form-text text-muted">Basit HTML etiketleri kullanabilirsiniz.</small>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">E-postayı Gönder</button>
+            <a href="/dashboard" class="btn btn-secondary">İptal / Panele Dön</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function toggleCustomerSelection(selectedValue) {
+        const specificCustomersSection = document.getElementById('specific_customers_section');
+        if (selectedValue === 'specific_customers') {
+            specificCustomersSection.style.display = 'block';
+        } else {
+            specificCustomersSection.style.display = 'none';
+        }
+    }
+    // Sayfa yüklendiğinde de mevcut seçime göre göster/gizle
+    document.addEventListener('DOMContentLoaded', function() {
+        const recipientTypeSelect = document.getElementById('recipient_type');
+        if (recipientTypeSelect) {
+            toggleCustomerSelection(recipientTypeSelect.value);
+        }
+    });
+</script>
+

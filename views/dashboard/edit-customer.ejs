@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="form-container">
+    <h2>Müşteriyi Düzenle: <%= formData.customer_name ? formData.customer_name : (formData.customer_email || 'Bilinmeyen Müşteri') %></h2>
+    
+    <form action="/dashboard/customers/update/<%= customer.id %>" method="POST" novalidate>
+        <div class="form-row">
+            <div class="form-group half-width">
+                <label for="customer_name">Müşteri Adı Soyadı:</label>
+                <input type="text" id="customer_name" name="customer_name" value="<%= typeof formData !== 'undefined' && formData.customer_name ? formData.customer_name : '' %>">
+            </div>
+            <div class="form-group half-width">
+                <label for="customer_email">Müşteri E-posta Adresi:</label>
+                <input type="email" id="customer_email" name="customer_email" value="<%= typeof formData !== 'undefined' && formData.customer_email ? formData.customer_email : '' %>" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group half-width">
+                <label for="phone_number">Telefon Numarası:</label>
+                <input type="text" id="phone_number" name="phone_number" value="<%= typeof formData !== 'undefined' && formData.phone_number ? formData.phone_number : '' %>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Adres:</label>
+            <textarea id="address" name="address" rows="3"><%= typeof formData !== 'undefined' && formData.address ? formData.address : '' %></textarea>
+        </div>
+        <div class="form-group">
+            <label for="order_details">Sipariş Detayları / Notlar:</label>
+            <textarea id="order_details" name="order_details" rows="4"><%= typeof formData !== 'undefined' && formData.order_details ? formData.order_details : '' %></textarea>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+            <a href="/dashboard/customers" class="btn btn-secondary">İptal / Geri Dön</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer.ejs') %>

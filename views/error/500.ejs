@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="error-page">
+    <h1><%= typeof statusCode !== 'undefined' ? statusCode : '500' %> - Sunucu Hatası</h1>
+    <p>Beklenmedik bir hata oluştu. Lütfen daha sonra tekrar deneyin veya yönetici ile iletişime geçin.</p>
+    <% if (typeof error !== 'undefined' && error && Object.keys(error).length > 0 && process.env.NODE_ENV === 'development') { %>
+        <pre class="error-stack"><strong>Hata:</strong> <%= error.message %><br><br><strong>Stack Trace:</strong><br><%= error.stack %></pre>
+    <% } %>
+    <a href="/" class="btn">Ana Sayfaya Dön</a>
+</div>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof pageTitle !== 'undefined' ? pageTitle + ' | PikselPosta' : 'PikselPosta' %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="container main-nav-container"> 
+            <a href="/" class="site-branding">
+                <img src="/images/logo.png" alt="PikselPosta Logo" class="logo-image">
+                <span class="site-name">PikselPosta</span>
+            </a>
+
+            <ul class="main-nav">
+                <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+                    <%# KULLANICI GİRİŞ YAPMIŞSA %>
+                    <li><a href="javascript:history.back()" class="btn btn-secondary-nav">Geri Dön</a></li>
+                    <li class="nav-item-right"><a href="/auth/logout" class="btn btn-logout">Çıkış Yap</a></li>
+                <% } else { %>
+                    <%# KULLANICI GİRİŞ YAPMAMIŞSA %>
+                    <li><a href="/auth/login" class="btn btn-secondary-nav <%= (typeof pageTitle !== 'undefined' && pageTitle.toLowerCase().includes('giriş yap')) ? 'active' : '' %>">Giriş Yap</a></li>
+                    <li><a href="/auth/register" class="btn btn-secondary-nav <%= (typeof pageTitle !== 'undefined' && pageTitle.toLowerCase().includes('kayıt ol')) ? 'active' : '' %>">Kayıt Ol</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <%- include('./messages.ejs') %>

@@ -1,0 +1,77 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="customers-container">
+    <h2>Müşterilerim</h2>
+
+    <div class="add-customer-form section-box">
+        <h3>Yeni Müşteri Ekle</h3>
+        <form action="/dashboard/customers/add" method="POST" novalidate>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="customer_name">Müşteri Adı Soyadı:</label>
+                    <input type="text" id="customer_name" name="customer_name" value="<%= typeof formData !== 'undefined' && formData.customer_name ? formData.customer_name : '' %>">
+                </div>
+                <div class="form-group half-width">
+                    <label for="customer_email">Müşteri E-posta Adresi:</label>
+                    <input type="email" id="customer_email" name="customer_email" value="<%= typeof formData !== 'undefined' && formData.customer_email ? formData.customer_email : '' %>" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="phone_number">Telefon Numarası:</label>
+                    <input type="text" id="phone_number" name="phone_number" value="<%= typeof formData !== 'undefined' && formData.phone_number ? formData.phone_number : '' %>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Adres:</label>
+                <textarea id="address" name="address" rows="3"><%= typeof formData !== 'undefined' && formData.address ? formData.address : '' %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="order_details">Sipariş Detayları / Notlar:</label>
+                <textarea id="order_details" name="order_details" rows="4"><%= typeof formData !== 'undefined' && formData.order_details ? formData.order_details : '' %></textarea>
+            </div>
+
+            <div class="form-actions"> 
+                <button type="submit" class="btn btn-primary">Müşteriyi Ekle</button>
+                <a href="/dashboard" class="btn btn-secondary">İptal / Panele Dön</a> 
+            </div>
+        </form>
+    </div>
+
+    <div class="customer-list section-box">
+        <h3>Mevcut Müşteriler (<%= customers.length %>)</h3>
+        <% if (customers.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Adı Soyadı</th>
+                        <th>E-posta</th>
+                        <th>Telefon</th>
+                        <th>Kayıt Tarihi</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% customers.forEach(function(customer) { %>
+                        <tr>
+                            <td><%= customer.customer_name ? customer.customer_name : '-' %></td>
+                            <td><%= customer.customer_email %></td>
+                            <td><%= customer.phone_number ? customer.phone_number : '-' %></td>
+                            <td><%= new Date(customer.created_at).toLocaleDateString('tr-TR') %></td>
+                            <td class="actions">->
+                                <a href="/dashboard/customers/view/<%= customer.id %>" class="btn btn-sm btn-info">Bilgi</a>
+                                <a href="/dashboard/customers/edit/<%= customer.id %>" class="btn btn-sm btn-edit">Düzenle</a>
+                                <form action="/dashboard/customers/delete/<%= customer.id %>" method="POST" style="display: inline;" onsubmit="return confirm('Bu müşteriyi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!');">
+                                    <button type="submit" class="btn btn-sm btn-delete">Sil</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="no-data-message">Henüz kayıtlı müşteriniz bulunmamaktadır. Yukarıdaki formu kullanarak yeni müşteri ekleyebilirsiniz.</p>
+        <% } %>
+    </div>
+</div>
+
