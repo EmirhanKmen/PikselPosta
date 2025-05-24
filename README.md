@@ -1,8 +1,13 @@
 # Piksel Posta
-yapmış olduğum PikselPosta projesi müşterilerinizi daha iyi bir şekilde saklama ve barındırma 
-.env klasörünün içerisindeki bilgileri girmeyi unutmayın.
+Bu websitenin amacı müşterilerinizi daha iyi bir şekilde saklama ve gerek kişisel gerek tüm müşterilerinize e-posta aracılığı ile ulaşmanızı sağlamaktır. 
 
-Bu Proje sadece deneme amaçlı yapılmıştır kullanım sırasında buglar olabilir!
+Lütfen uygulamayı çalıştırmadan önce Readme.txt dosyasını okumayı unutmayın.
+
+Website henüz test aşamasında olduğu için takıldığınız bir kısım olursa bana ulaşabilirsiniz.
+
+Website şu aşamada localhost üzerinde çalıştığı için yalnızca Şifre Güvenli Session Cookie'lerini "app.js" dosyası ile Cookie'nin client-side JavaScript tarafından erişilmesini engelledik ve "bcrypt" ile Şifre Hashleme yaptık.
+
+Websitesini kullanırken bu durumları göz önünde bulundurarak düzeltmeler ve iyileştirmeler yapabilirsiniz.
 
 Projenin sadece genel tasarımına önem verildiği için kendinize göre kişiselleştirmeniz mümkündür.
 --------------------------------------------------------------------------------------------------------------------------
@@ -19,3 +24,4 @@ Web siteyi başlatmak için öncelikle;
 kodunu kullanıp terminal ile "node app.js" i başlatmanız gerekmektedir.
 --------------------------------------------------------------------------------------------------------------------------
 Yukarda verilmiş olan "müşteridatabase."sql dosyasındaki bağlılıkları MySql Workbench uygulamasında kurmanız gerekmektedir.
+--------------------------------------------------------------------------------------------------------------------------
