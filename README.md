@@ -12,5 +12,9 @@ Projenin sadece genel tasarımına önem verildiği için kendinize göre kişis
 ![Ekran görüntüsü 2025-05-24 002639](https://github.com/user-attachments/assets/391fe442-54bb-4d33-b76f-a3e69a2971d7)
 
 Web siteyi başlatmak için öncelikle 
+--------------------------------------------------------------------------------------------------------------------------
 "npm install"
-kodunu kullanıp terminal ile "node app.js" i başlatmanız gerekmektedir
+--------------------------------------------------------------------------------------------------------------------------
+kodunu kullanıp terminal ile "node app.js" i başlatmanız gerekmektedir.
+--------------------------------------------------------------------------------------------------------------------------
+Yukarda verilmiş olan "müşteridatabase."sql dosyasındaki bağlılıkları MySql Workbench uygulamasında kurmanız gerekmektedir.
