@@ -1,6 +1,5 @@
-# Musteri-Websiteler
-PikselPosta
-yapmış oldfuğum PikselPosta projesi müşterilerinizi daha iyi bir şekilde saklama ve barındırma 
+# Piksel Posta
+yapmış olduğum PikselPosta projesi müşterilerinizi daha iyi bir şekilde saklama ve barındırma 
 .env klasörünün içerisindeki bilgileri girmeyi unutmayın.
 
 Bu Proje sadece deneme amaçlı yapılmıştır kullanım sırasında buglar olabilir!
