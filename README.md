@@ -1,27 +1,126 @@
-# Piksel Posta
-Bu websitenin amacı müşterilerinizi daha iyi bir şekilde saklama ve gerek kişisel gerek tüm müşterilerinize e-posta aracılığı ile ulaşmanızı sağlamaktır. 
+Piksel Posta - Müşteri Yönetimi ve E-posta Uygulaması
 
-Lütfen uygulamayı çalıştırmadan önce Readme.txt dosyasını okumayı unutmayın.
+Piksel Posta, müşterilerinizi veritabanında güvenli bir şekilde saklamanızı ve onlara hem toplu hem de bireysel olarak e-posta göndermenizi sağlayan basit bir web uygulamasıdır. Bu proje, özellikle küçük işletmelerin veya bireysel kullanıcıların müşteri ilişkilerini (CRM) kolayca yönetmesi için bir başlangıç noktası olarak tasarlanmıştır.
 
-Website henüz test aşamasında olduğu için takıldığınız bir kısım olursa bana ulaşabilirsiniz.
+Proje şu anda geliştirme ve test aşamasındadır.
 
-Website şu aşamada localhost üzerinde çalıştığı için yalnızca Şifre Güvenli Session Cookie'lerini "app.js" dosyası ile Cookie'nin client-side JavaScript tarafından erişilmesini engelledik ve "bcrypt" ile Şifre Hashleme yaptık.
+![alt text](https://github.com/user-attachments/assets/47e3015d-e417-4eae-ab10-b9194f5e3b14)
 
-Websitesini kullanırken bu durumları göz önünde bulundurarak düzeltmeler ve iyileştirmeler yapabilirsiniz.
 
-Projenin sadece genel tasarımına önem verildiği için kendinize göre kişiselleştirmeniz mümkündür.
---------------------------------------------------------------------------------------------------------------------------
-![Ekran görüntüsü 2025-05-23 232434](https://github.com/user-attachments/assets/47e3015d-e417-4eae-ab10-b9194f5e3b14)
+![alt text](https://github.com/user-attachments/assets/391fe442-54bb-4d33-b76f-a3e69a2971d7)
 
---------------------------------------------------------------------------------------------------------------------------
+📝 Proje Hakkında
 
-![Ekran görüntüsü 2025-05-24 002639](https://github.com/user-attachments/assets/391fe442-54bb-4d33-b76f-a3e69a2971d7)
+Bu uygulamanın temel amacı, kullanıcıların müşteri listelerini oluşturmasını, yönetmesini ve bu listeye kolayca e-posta pazarlaması yapabilmesini sağlamaktır. Projenin genel tasarımına odaklanılmış olup, backend ve frontend yapısı kendi ihtiyaçlarınıza göre kolayca kişiselleştirilebilir ve geliştirilebilir durumdadır.
 
-Web siteyi başlatmak için öncelikle;
---------------------------------------------------------------------------------------------------------------------------
-"npm install"
---------------------------------------------------------------------------------------------------------------------------
-kodunu kullanıp terminal ile "node app.js" i başlatmanız gerekmektedir.
---------------------------------------------------------------------------------------------------------------------------
-Yukarda verilmiş olan "müşteridatabase."sql dosyasındaki bağlılıkları MySql Workbench uygulamasında kurmanız gerekmektedir.
---------------------------------------------------------------------------------------------------------------------------
+✨ Özellikler
+
+Müşteri Yönetimi: Müşterilerinizi ekleyin, listeleyin ve bilgilerini güncelleyin.
+
+E-posta Gönderimi: Tek bir müşteriye veya tüm müşteri listenize aynı anda e-posta gönderin.
+
+Güvenli Oturum Yönetimi: express-session ile güvenli ve HTTPOnly cookie'ler kullanılarak oturum yönetimi sağlanmıştır.
+
+Şifre Güvenliği: Kullanıcı şifreleri bcrypt kütüphanesi ile hashlenerek veritabanında saklanır.
+
+🛠️ Kullanılan Teknolojiler
+
+Backend: Node.js, Express.js
+
+Veritabanı: MySQL
+
+Güvenlik: bcrypt, express-session
+
+Frontend: HTML, CSS, JavaScript (Kişiselleştirmeye açık)
+
+🚀 Kurulum ve Başlatma
+
+Uygulamayı yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
+
+Gereksinimler
+
+Node.js (ve npm)
+
+MySQL ve MySQL Workbench (veya başka bir veritabanı yönetim aracı)
+
+Kurulum Adımları
+
+Projeyi klonlayın:
+
+code
+Bash
+download
+content_copy
+expand_less
+git clone https://github.com/senin-kullanici-adin/piksel-posta.git
+cd piksel-posta
+
+Gerekli Node.js paketlerini yükleyin:
+
+code
+Bash
+download
+content_copy
+expand_less
+npm install
+
+Veritabanını kurun:
+
+MySQL Workbench veya tercih ettiğiniz bir MySQL istemcisini açın.
+
+Proje dosyaları içinde bulunan müşteridatabase.sql dosyasını içe aktararak (import) veritabanını ve gerekli tabloları oluşturun.
+
+Veritabanı bağlantı ayarlarını yapın:
+
+Proje dosyalarınızda veritabanı bağlantı bilgilerinin bulunduğu dosyayı (örneğin app.js veya db.js) açın.
+
+Kendi MySQL kullanıcı adı, şifre ve veritabanı adı bilgilerinizi girin.
+
+Uygulamayı Başlatma
+
+Tüm kurulum adımları tamamlandıktan sonra, terminalde aşağıdaki komutu çalıştırın:
+
+code
+Bash
+download
+content_copy
+expand_less
+node app.js
+
+Uygulama varsayılan olarak http://localhost:3000 adresinde çalışmaya başlayacaktır. (Port numarasını app.js dosyasından kontrol edebilir veya değiştirebilirsiniz.)
+
+⚠️ Güvenlik Notları ve Geliştirme Önerileri
+
+Bu proje, bir öğrenme ve test projesi olarak geliştirilmiştir. Bu nedenle şu anki haliyle yalnızca localhost üzerinde güvenli bir şekilde çalışması hedeflenmiştir.
+
+Mevcut Güvenlik Önlemleri:
+
+Şifre Hashleme: bcrypt kullanılarak şifreler veritabanına kaydedilmeden önce güvenli bir şekilde hashlenir.
+
+Güvenli Oturum Cookie'leri: Session cookie'lerinin client-side JavaScript tarafından erişilmesi engellenmiştir (httpOnly: true).
+
+Geliştirme Önerileri:
+
+Projeyi canlı bir sunucuda yayınlamadan önce HTTPS (SSL sertifikası) kullanmanız şiddetle tavsiye edilir.
+
+Gelen verilere karşı sunucu tarafı doğrulama (validation) eklenmelidir.
+
+SQL Injection, XSS gibi zafiyetlere karşı ek güvenlik katmanları (örneğin, ORM kullanımı veya sorguların parametrelendirilmesi) güçlendirilebilir.
+
+E-posta gönderimi için daha profesyonel bir servis (SendGrid, Mailgun vb.) entegrasyonu yapılabilir.
+
+🤝 Katkıda Bulunma
+
+Bu proje geliştirmeye açıktır. Katkıda bulunmak isterseniz:
+
+Projeyi Fork'layın.
+
+Yeni bir Feature Branch oluşturun (git checkout -b yenilik/harika-bir-ozellik).
+
+Değişikliklerinizi Commit'leyin (git commit -m 'Yeni ve harika bir özellik eklendi').
+
+Branch'inizi Push'layın (git push origin yenilik/harika-bir-ozellik).
+
+Bir Pull Request açın.
+
+Bu README dosyası, projenin daha anlaşılır ve kullanılabilir olması için düzenlenmiştir.
