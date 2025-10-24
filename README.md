@@ -41,7 +41,6 @@ Uygulamayı yerel makinenizde çalıştırmak için aşağıdaki adımları izle
     git clone https://github.com/EmirhanKmen/PikselPosta.git
     cd piksel-posta
     ```
-    *Not: `senin-kullanici-adin/piksel-posta` kısmını kendi GitHub bilgilerinizle güncellemeyi unutmayın.*
 
 2.  **Gerekli Node.js paketlerini yükleyin:**
     ```bash
